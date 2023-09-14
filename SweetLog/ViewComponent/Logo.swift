@@ -10,8 +10,8 @@ import SwiftUI
 struct Logo: View {
     var body: some View {
         Text("Sweet Log")
-            .foregroundStyle(Color.mainColor)
-            .font(.CustomFont.regular.font(size: 32))
+            .foregroundStyle(Color.primarymain)
+            .font(.CustomFont.regular.font(size: 24))
     }
 }
 

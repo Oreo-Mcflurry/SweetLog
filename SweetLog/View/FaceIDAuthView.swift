@@ -11,21 +11,30 @@ import LocalAuthentication
 struct FaceIDAuthView: View {
     @EnvironmentObject var userData: UserData
     @Environment (\.modelContext) var modelContext
-    @State private var isUnlocked = false
+    @Binding var isUnlocked: Bool
     var body: some View {
             VStack{
-                Text("인증해주세요.")
-                Button("다시 인증하기") {
+                Text("다시 인증해주세요")
+                Button {
                     authenticate(isUnlock: $isUnlocked)
+                } label: {
+                    Radial(text: "")
+                        .frame(width: 86, height: 50)
+                        .padding(.horizontal)
+                        .overlay {
+                            Image(systemName: "faceid")
+                                .foregroundStyle(.white)
+                                .font(.title)
+                        }
                 }
             }
             .onAppear(perform: { authenticate(isUnlock: $isUnlocked) })
     }
 }
-
-#Preview {
-    FaceIDAuthView()
-}
+//
+//#Preview {
+//    FaceIDAuthView()
+//}
 
 //
 //if !isUnlocked {

@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6E5EDE2AA1D2E100701BD2 /* Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E5EDD2AA1D2E100701BD2 /* Radial.swift */; };
+		0B770E862AB08450000710B5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B770E852AB08450000710B5 /* SettingView.swift */; };
+		0B83CC3E2AA1A38700884F30 /* ScrollMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */; };
 		0B86394A2A950E3D005ED10D /* SweetLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8639492A950E3D005ED10D /* SweetLogApp.swift */; };
 		0B86394E2A950E3F005ED10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B86394D2A950E3F005ED10D /* Assets.xcassets */; };
 		0B8639512A950E3F005ED10D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B8639502A950E3F005ED10D /* Preview Assets.xcassets */; };
-		0B8639582A950E56005ED10D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8639572A950E56005ED10D /* ContentView.swift */; };
 		0B86395D2A950E65005ED10D /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B86395A2A950E65005ED10D /* UserDefault.swift */; };
 		0B86395E2A950E65005ED10D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B86395B2A950E65005ED10D /* Message.swift */; };
 		0B86395F2A950E65005ED10D /* SwiftDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B86395C2A950E65005ED10D /* SwiftDataModel.swift */; };
@@ -24,15 +26,21 @@
 		0B8639722A950E8C005ED10D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B86396E2A950E8C005ED10D /* ColorExtension.swift */; };
 		0B8639752A950E90005ED10D /* SulphurPoint-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B8639742A950E90005ED10D /* SulphurPoint-Regular.ttf */; };
 		0B8639792A95D53F005ED10D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8639782A95D53F005ED10D /* MainView.swift */; };
-		0BA0C8F82A95E9FE009A3729 /* ForeachSerchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C8F72A95E9FE009A3729 /* ForeachSerchView.swift */; };
+		0BA0C8FC2A970A52009A3729 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0C8FB2A970A52009A3729 /* AddEditView.swift */; };
+		0BA50B3F2AA34D2700BE8770 /* SizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B3E2AA34D2700BE8770 /* SizeExtension.swift */; };
+		0BA50B412AA3502200BE8770 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B402AA3502200BE8770 /* DetailView.swift */; };
+		0BA50B432AA3525B00BE8770 /* DateformatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B422AA3525B00BE8770 /* DateformatterExtension.swift */; };
+		0BEADE7E2AB31D1C0065381A /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEADE7D2AB31D1C0065381A /* PasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B6E5EDD2AA1D2E100701BD2 /* Radial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radial.swift; sourceTree = "<group>"; };
+		0B770E852AB08450000710B5 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMessageView.swift; sourceTree = "<group>"; };
 		0B8639462A950E3D005ED10D /* SweetLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8639492A950E3D005ED10D /* SweetLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetLogApp.swift; sourceTree = "<group>"; };
 		0B86394D2A950E3F005ED10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B8639502A950E3F005ED10D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0B8639572A950E56005ED10D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0B86395A2A950E65005ED10D /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		0B86395B2A950E65005ED10D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0B86395C2A950E65005ED10D /* SwiftDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataModel.swift; sourceTree = "<group>"; };
@@ -47,7 +55,11 @@
 		0B8639742A950E90005ED10D /* SulphurPoint-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SulphurPoint-Regular.ttf"; sourceTree = "<group>"; };
 		0B8639762A950E9F005ED10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0B8639782A95D53F005ED10D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		0BA0C8F72A95E9FE009A3729 /* ForeachSerchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeachSerchView.swift; sourceTree = "<group>"; };
+		0BA0C8FB2A970A52009A3729 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
+		0BA50B3E2AA34D2700BE8770 /* SizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtension.swift; sourceTree = "<group>"; };
+		0BA50B402AA3502200BE8770 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0BA50B422AA3525B00BE8770 /* DateformatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateformatterExtension.swift; sourceTree = "<group>"; };
+		0BEADE7D2AB31D1C0065381A /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +99,6 @@
 				0B8639652A950E83005ED10D /* ViewComponent */,
 				0B8639602A950E75005ED10D /* View */,
 				0B8639492A950E3D005ED10D /* SweetLogApp.swift */,
-				0B8639572A950E56005ED10D /* ContentView.swift */,
 				0B86394D2A950E3F005ED10D /* Assets.xcassets */,
 				0B86394F2A950E3F005ED10D /* Preview Content */,
 			);
@@ -118,7 +129,11 @@
 				0B8639612A950E75005ED10D /* SerchView.swift */,
 				0B8639622A950E75005ED10D /* FaceIDAuthView.swift */,
 				0B8639782A95D53F005ED10D /* MainView.swift */,
-				0BA0C8F72A95E9FE009A3729 /* ForeachSerchView.swift */,
+				0BA0C8FB2A970A52009A3729 /* AddEditView.swift */,
+				0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */,
+				0BA50B402AA3502200BE8770 /* DetailView.swift */,
+				0B770E852AB08450000710B5 /* SettingView.swift */,
+				0BEADE7D2AB31D1C0065381A /* PasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +143,7 @@
 			children = (
 				0B8639662A950E83005ED10D /* AttributedText.swift */,
 				0B8639672A950E83005ED10D /* Logo.swift */,
+				0B6E5EDD2AA1D2E100701BD2 /* Radial.swift */,
 			);
 			path = ViewComponent;
 			sourceTree = "<group>";
@@ -139,6 +155,8 @@
 				0B86396C2A950E8C005ED10D /* FaceIDAuthExtension.swift */,
 				0B86396D2A950E8C005ED10D /* ImageExtension.swift */,
 				0B86396E2A950E8C005ED10D /* ColorExtension.swift */,
+				0BA50B3E2AA34D2700BE8770 /* SizeExtension.swift */,
+				0BA50B422AA3525B00BE8770 /* DateformatterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -223,18 +241,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B86396F2A950E8C005ED10D /* FontExtension.swift in Sources */,
+				0BEADE7E2AB31D1C0065381A /* PasswordView.swift in Sources */,
+				0B770E862AB08450000710B5 /* SettingView.swift in Sources */,
+				0BA50B412AA3502200BE8770 /* DetailView.swift in Sources */,
 				0B8639792A95D53F005ED10D /* MainView.swift in Sources */,
 				0B8639632A950E75005ED10D /* SerchView.swift in Sources */,
 				0B8639642A950E75005ED10D /* FaceIDAuthView.swift in Sources */,
-				0B8639582A950E56005ED10D /* ContentView.swift in Sources */,
 				0B86395F2A950E65005ED10D /* SwiftDataModel.swift in Sources */,
 				0B8639692A950E83005ED10D /* Logo.swift in Sources */,
+				0BA0C8FC2A970A52009A3729 /* AddEditView.swift in Sources */,
 				0B8639682A950E83005ED10D /* AttributedText.swift in Sources */,
 				0B8639712A950E8C005ED10D /* ImageExtension.swift in Sources */,
-				0BA0C8F82A95E9FE009A3729 /* ForeachSerchView.swift in Sources */,
+				0B6E5EDE2AA1D2E100701BD2 /* Radial.swift in Sources */,
 				0B86395E2A950E65005ED10D /* Message.swift in Sources */,
+				0B83CC3E2AA1A38700884F30 /* ScrollMessageView.swift in Sources */,
+				0BA50B432AA3525B00BE8770 /* DateformatterExtension.swift in Sources */,
 				0B8639702A950E8C005ED10D /* FaceIDAuthExtension.swift in Sources */,
 				0B86394A2A950E3D005ED10D /* SweetLogApp.swift in Sources */,
+				0BA50B3F2AA34D2700BE8770 /* SizeExtension.swift in Sources */,
 				0B86395D2A950E65005ED10D /* UserDefault.swift in Sources */,
 				0B8639722A950E8C005ED10D /* ColorExtension.swift in Sources */,
 			);
@@ -374,6 +398,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SweetLog/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "사용자가 생체인식으로 잠금을 원할때 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -404,6 +429,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SweetLog/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "사용자가 생체인식으로 잠금을 원할때 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

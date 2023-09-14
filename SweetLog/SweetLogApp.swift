@@ -12,8 +12,10 @@ struct SweetLogApp: App {
     @StateObject var userData = UserData()
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environmentObject(userData)
+            NavigationStack {
+                MainView()
+                    .environmentObject(userData)
+            }
         }
         .modelContainer(for: Message.self)
     }

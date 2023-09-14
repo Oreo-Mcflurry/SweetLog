@@ -9,48 +9,89 @@ import SwiftUI
 import SwiftData
 
 struct SerchView: View {
-    @State var serchText: String = ""
     @Environment (\.modelContext) var modelContext
-    @State var serchingMessages: [Message] = []
+    @State var searchText: String = ""
+    @State var isSearching: Bool = false
+    @Query var messages: [Message]
+    @Environment(\.dismiss) private var dismiss
+    
+    var serchingMessages: [Message] {
+        let queryMessages = messages.compactMap { item in
+            let containQuery = item.message.range(of: searchText, options: .caseInsensitive) != nil
+            
+            return containQuery ? item : nil
+        }
+        return queryMessages
+    }
     
     var body: some View {
         VStack {
-            
-            ForEach(serchingMessages) { item in
-                
-                NavigationLink {
-//                    DetailView()
-                } label: {
-                    ForeachSerchView(fetchMessage: item, serchText: [serchText])
+            if searchText == "" {
+                Text("검색어를 입력해주세요")
+                    .font(.caption)
+                    .foregroundStyle(Color.labelbrown)
+            } else {
+                ScrollView {
+                    ForEach(serchingMessages) { item in
+                        NavigationLink {
+                            DetailView(message: item, searchText: searchText)
+                        } label: {
+                            ScrollMessageView(message: item, searchText: searchText)
+                        }
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                    }
                 }
-                
             }
         }
-        .onChange(of: serchText) { oldValue, newValue in
-            let predicate = #Predicate<Message> { $0.message.contains(newValue) }
-            let descriptor = FetchDescriptor<Message>(predicate: predicate)
-            do {
-                let currentTrain = try modelContext.fetch(descriptor)
-                serchingMessages = currentTrain
-                
-            } catch {
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-        .toolbar {
-//            ToolbarItem() {
-                TextField("검색", text: $serchText)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 310)
-//            }
+        .background {
+            Image(image: .mainBG)
+                .resizable()
+                .ignoresSafeArea()
+                .frame(width: UIWidth, height: UIHeight)
             
         }
-        
+                .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(Color.textfieldSF)
+                        .font(.callout)
+                    TextField("검색", text: $searchText)
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal, 10)
+                .frame(width: UIWidth*0.8)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundStyle(Color.textfield)
+                }
+            }
+            
+            ToolbarItem {
+                Button("취소") {
+                    dismiss()
+                }
+                .foregroundStyle(Color.primarymain)
+            }
+        }
     }
 }
 
+
 #Preview {
     NavigationStack {
-        SerchView()
+        MainView()
+//            .modelContext(previewmod)
     }
 }
+
+
+
+//                List {
+//
+//                }
+//                .searchable(text: $searchText, isPresented: $isSearching) {
+//                                Text("검색")
+//                            }

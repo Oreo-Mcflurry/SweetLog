@@ -10,7 +10,7 @@ import SwiftUI
 extension Image {
     enum ImageCase: String {
         case heart = "Heart"
-        case addBG = "AddBG"
+        case addBG = "ADDBG"
         case mainBG = "MainBG"
     }
 }

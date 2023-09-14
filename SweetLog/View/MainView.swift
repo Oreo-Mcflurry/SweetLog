@@ -10,68 +10,135 @@ import SwiftData
 
 struct MainView: View {
     @StateObject var dataModel = SwiftDataViewModel()
-    @EnvironmentObject var userData: UserData
     @Environment (\.modelContext) var modelContext
+    @EnvironmentObject var userData: UserData
+    @Environment(\.dismiss) private var dismiss
     @Query var messages: [Message]
+    @State private var showModal: Bool = false
+    @State private var isUnlock: Bool = false
+    
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.backGroundColor.ignoresSafeArea()
-                VStack {
-                    Spacer()
-                    Logo()
-                    Image(image: .heart)
-                    
-                    Button {
-                        dataModel.addItem(date: Date(), message: "Musk")
-                    } label: {
-                        Image("plusbutton")
-                    }
-                    
-                    if messages.isEmpty {
-                        Text("+ 버튼을 눌러 달콤한 메세지를 추가해보세요")
-                            .foregroundColor(.secounaryDarkColor)
-                            .padding()
-                        Spacer()
-                    } else {
-                        Spacer()
-                        
-                        NavigationLink {
-                        } label: {
-                            VStack {
-                                Text("\(messages.count) messages")
-                                    .font(.CustomFont.regular.font(size: 15))
-                                    .foregroundColor(.mainColor)
-                                
-                                
-                                Image(systemName: "chevron.down")
-                                    .foregroundColor(.mainColor)
-                                    .padding()
-                            }
-                        }
-                    }
+        if userData.useFaceID && isUnlock == false {
+            FaceIDAuthView(isUnlocked: $isUnlock)
+                .background {
+                    mainScreen.opacity(0.5).disabled(true)
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink {
-                            SerchView()
-                        } label: {
-                            Image(systemName: "magnifyingglass").foregroundColor(.mainColor)
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink {
-                            ContentView()
-                        } label: {
-                            Image(systemName: "slider.horizontal.3").foregroundColor(.mainColor)
-                            
-                        }
+        } else {
+            mainScreen
+        }
+        
+    }
+    
+    var mainScreen: some View {
+        GeometryReader { geo in
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack {
+                        firstScreen
+                            .frame(height: UIHeight)
+                            .id("first")
+                        
+                        messageScroll
+                            .frame(height: UIHeight - geo.safeAreaInsets.magnitude)
+                            .id("messages")
+                        
                     }
                 }
                 .onAppear {
+                    if messages.isEmpty { proxy.scrollTo("first") }
                     dataModel.modelContext = modelContext
                 }
+                
+            }
+            .scrollDisabled(messages.isEmpty)
+            .scrollTargetBehavior(.paging)
+            .background(Color.backGround)
+            .scrollIndicators(.hidden)
+            .ignoresSafeArea()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) { Logo().padding() }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    maintoolbar
+                }
+            }
+        }
+    }
+    
+    var firstScreen: some View {
+        VStack {
+            Spacer()
+            Logo()
+            Image(image: .heart)
+            
+            Button {
+                self.showModal.toggle()
+            } label: {
+                Radial(text: "+")
+                    .frame(width: 86, height: 50)
+            }
+            .sheet(isPresented: self.$showModal) {
+                AddEditView(showModal: $showModal)
+            }
+            
+            if messages.isEmpty {
+                Text("+ 버튼을 눌러 달콤한 메세지를 추가해보세요")
+                    .foregroundColor(Color.secondarydark)
+                    .padding()
+                Spacer()
+            } else {
+                Spacer()
+                VStack {
+                    Text("\(messages.count) messages")
+                        .font(.CustomFont.regular.font(size: 15))
+                        .foregroundColor(.primarymain)
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(.primarymain)
+                        .padding()
+                        .padding(.bottom)
+                }
+            }
+        }
+    }
+    
+    var messageScroll: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(messages) { item in
+                    NavigationLink {
+                        DetailView(message: item)
+                    } label: {
+                        ScrollMessageView(message: item)
+                            .padding(.bottom)
+                            .padding(.horizontal)
+                        
+                    }
+                }
+            }
+            .ignoresSafeArea()
+            
+            
+        }
+        .background {
+            Image(image: .mainBG)
+                .resizable()
+                .frame(width: UIWidth, height: .infinity)
+                .ignoresSafeArea()
+        }
+    }
+    
+    var maintoolbar: some View {
+        HStack {
+            NavigationLink {
+                SerchView()
+            } label: {
+                Image(systemName: "magnifyingglass").foregroundColor(.primarymain)
+            }
+            
+            NavigationLink {
+                SettingView()
+            } label: {
+                Image(systemName: "slider.horizontal.3").foregroundColor(.primarymain)
             }
         }
     }
@@ -80,5 +147,6 @@ struct MainView: View {
 #Preview {
     NavigationStack {
         MainView()
+        //            .modelContext(ModelContext(p))
     }
 }
