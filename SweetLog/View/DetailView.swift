@@ -23,6 +23,7 @@ struct DetailView: View {
                     AttributedText(text: message.message, keyword: search, isDetail: true)
                 } else {
                     Text(message.message)
+                        .foregroundStyle(Color.label1)
                 }
             }
             .foregroundStyle(.black)
@@ -43,8 +44,10 @@ struct DetailView: View {
             AddEditView(editMessage: message, showModal: $showModal)
         }
         .alert("메세지를 삭제할까요?", isPresented: $showDeleteAlert) {
+            cancleButton
             deleteButton
         }
+        
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 toolbarmenu
@@ -63,7 +66,7 @@ struct DetailView: View {
                     Image(systemName: "square.and.pencil")
                 }
             }
-            
+//
             Button(role: .destructive) {
                 self.showDeleteAlert.toggle()
             } label: {
@@ -81,12 +84,14 @@ struct DetailView: View {
     }
     
     private var deleteButton: some View {
-        Button(role: .destructive){
+        Button("삭제", role: .destructive) {
             dataModel.deleteItems(item: message)
             dismiss()
-        } label: {
-            Text("삭제")
         }
+    }
+    
+    private var cancleButton: some View {
+        Button("취소", role: .cancel) { }
     }
 }
 

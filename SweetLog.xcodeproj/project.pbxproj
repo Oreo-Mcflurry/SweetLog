@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B24B7542AB7D53500935F28 /* SulphurPoint-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B24B7532AB7D53500935F28 /* SulphurPoint-Light.ttf */; };
+		0B2BB3E32AB58C410084EBB5 /* PasswordKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BB3E22AB58C410084EBB5 /* PasswordKeyboardView.swift */; };
 		0B6E5EDE2AA1D2E100701BD2 /* Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E5EDD2AA1D2E100701BD2 /* Radial.swift */; };
 		0B770E862AB08450000710B5 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B770E852AB08450000710B5 /* SettingView.swift */; };
 		0B83CC3E2AA1A38700884F30 /* ScrollMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */; };
@@ -30,10 +32,40 @@
 		0BA50B3F2AA34D2700BE8770 /* SizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B3E2AA34D2700BE8770 /* SizeExtension.swift */; };
 		0BA50B412AA3502200BE8770 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B402AA3502200BE8770 /* DetailView.swift */; };
 		0BA50B432AA3525B00BE8770 /* DateformatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA50B422AA3525B00BE8770 /* DateformatterExtension.swift */; };
-		0BEADE7E2AB31D1C0065381A /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEADE7D2AB31D1C0065381A /* PasswordView.swift */; };
+		0BEADE7E2AB31D1C0065381A /* PasswordSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEADE7D2AB31D1C0065381A /* PasswordSettingView.swift */; };
+		0BEADE862AB325580065381A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEADE852AB325580065381A /* ShareViewController.swift */; };
+		0BEADE892AB325580065381A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEADE872AB325580065381A /* MainInterface.storyboard */; };
+		0BEADE8D2AB325580065381A /* SweetLogShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0BEADE832AB325580065381A /* SweetLogShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0BEADE972AB32E040065381A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEADE962AB32E040065381A /* Model.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0BEADE8B2AB325580065381A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B86393E2A950E3D005ED10D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0BEADE822AB325580065381A;
+			remoteInfo = SweetLogShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0BEADE912AB325580065381A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0BEADE8D2AB325580065381A /* SweetLogShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0B24B7532AB7D53500935F28 /* SulphurPoint-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SulphurPoint-Light.ttf"; sourceTree = "<group>"; };
+		0B2BB3E22AB58C410084EBB5 /* PasswordKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordKeyboardView.swift; sourceTree = "<group>"; };
 		0B6E5EDD2AA1D2E100701BD2 /* Radial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radial.swift; sourceTree = "<group>"; };
 		0B770E852AB08450000710B5 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMessageView.swift; sourceTree = "<group>"; };
@@ -59,11 +91,25 @@
 		0BA50B3E2AA34D2700BE8770 /* SizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtension.swift; sourceTree = "<group>"; };
 		0BA50B402AA3502200BE8770 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0BA50B422AA3525B00BE8770 /* DateformatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateformatterExtension.swift; sourceTree = "<group>"; };
-		0BEADE7D2AB31D1C0065381A /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		0BEADE7D2AB31D1C0065381A /* PasswordSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingView.swift; sourceTree = "<group>"; };
+		0BEADE832AB325580065381A /* SweetLogShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SweetLogShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BEADE852AB325580065381A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		0BEADE882AB325580065381A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		0BEADE8A2AB325580065381A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BEADE922AB326910065381A /* SweetLogShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SweetLogShare.entitlements; sourceTree = "<group>"; };
+		0BEADE932AB3269B0065381A /* SweetLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SweetLog.entitlements; sourceTree = "<group>"; };
+		0BEADE962AB32E040065381A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0B8639432A950E3D005ED10D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BEADE802AB325580065381A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0B8639482A950E3D005ED10D /* SweetLog */,
+				0BEADE842AB325580065381A /* SweetLogShare */,
 				0B8639472A950E3D005ED10D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				0B8639462A950E3D005ED10D /* SweetLog.app */,
+				0BEADE832AB325580065381A /* SweetLogShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +140,7 @@
 		0B8639482A950E3D005ED10D /* SweetLog */ = {
 			isa = PBXGroup;
 			children = (
+				0BEADE932AB3269B0065381A /* SweetLog.entitlements */,
 				0B8639762A950E9F005ED10D /* Info.plist */,
 				0B86396A2A950E8C005ED10D /* Extension */,
 				0B8639732A950E90005ED10D /* Font */,
@@ -127,13 +176,14 @@
 			isa = PBXGroup;
 			children = (
 				0B8639612A950E75005ED10D /* SerchView.swift */,
-				0B8639622A950E75005ED10D /* FaceIDAuthView.swift */,
 				0B8639782A95D53F005ED10D /* MainView.swift */,
 				0BA0C8FB2A970A52009A3729 /* AddEditView.swift */,
 				0B83CC3D2AA1A38700884F30 /* ScrollMessageView.swift */,
 				0BA50B402AA3502200BE8770 /* DetailView.swift */,
 				0B770E852AB08450000710B5 /* SettingView.swift */,
-				0BEADE7D2AB31D1C0065381A /* PasswordView.swift */,
+				0BEADE7D2AB31D1C0065381A /* PasswordSettingView.swift */,
+				0B8639622A950E75005ED10D /* FaceIDAuthView.swift */,
+				0B2BB3E22AB58C410084EBB5 /* PasswordKeyboardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,8 +215,21 @@
 			isa = PBXGroup;
 			children = (
 				0B8639742A950E90005ED10D /* SulphurPoint-Regular.ttf */,
+				0B24B7532AB7D53500935F28 /* SulphurPoint-Light.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		0BEADE842AB325580065381A /* SweetLogShare */ = {
+			isa = PBXGroup;
+			children = (
+				0BEADE922AB326910065381A /* SweetLogShare.entitlements */,
+				0BEADE852AB325580065381A /* ShareViewController.swift */,
+				0BEADE872AB325580065381A /* MainInterface.storyboard */,
+				0BEADE8A2AB325580065381A /* Info.plist */,
+				0BEADE962AB32E040065381A /* Model.swift */,
+			);
+			path = SweetLogShare;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,15 +242,34 @@
 				0B8639422A950E3D005ED10D /* Sources */,
 				0B8639432A950E3D005ED10D /* Frameworks */,
 				0B8639442A950E3D005ED10D /* Resources */,
+				0BEADE912AB325580065381A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0BEADE8C2AB325580065381A /* PBXTargetDependency */,
 			);
 			name = SweetLog;
 			productName = SweetLog;
 			productReference = 0B8639462A950E3D005ED10D /* SweetLog.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0BEADE822AB325580065381A /* SweetLogShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BEADE8E2AB325580065381A /* Build configuration list for PBXNativeTarget "SweetLogShare" */;
+			buildPhases = (
+				0BEADE7F2AB325580065381A /* Sources */,
+				0BEADE802AB325580065381A /* Frameworks */,
+				0BEADE812AB325580065381A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SweetLogShare;
+			productName = SweetLogShare;
+			productReference = 0BEADE832AB325580065381A /* SweetLogShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -200,6 +282,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					0B8639452A950E3D005ED10D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					0BEADE822AB325580065381A = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -218,6 +303,7 @@
 			projectRoot = "";
 			targets = (
 				0B8639452A950E3D005ED10D /* SweetLog */,
+				0BEADE822AB325580065381A /* SweetLogShare */,
 			);
 		};
 /* End PBXProject section */
@@ -227,9 +313,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B24B7542AB7D53500935F28 /* SulphurPoint-Light.ttf in Resources */,
 				0B8639512A950E3F005ED10D /* Preview Assets.xcassets in Resources */,
 				0B8639752A950E90005ED10D /* SulphurPoint-Regular.ttf in Resources */,
 				0B86394E2A950E3F005ED10D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BEADE812AB325580065381A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BEADE892AB325580065381A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B86396F2A950E8C005ED10D /* FontExtension.swift in Sources */,
-				0BEADE7E2AB31D1C0065381A /* PasswordView.swift in Sources */,
+				0BEADE7E2AB31D1C0065381A /* PasswordSettingView.swift in Sources */,
 				0B770E862AB08450000710B5 /* SettingView.swift in Sources */,
 				0BA50B412AA3502200BE8770 /* DetailView.swift in Sources */,
 				0B8639792A95D53F005ED10D /* MainView.swift in Sources */,
@@ -258,13 +353,42 @@
 				0BA50B432AA3525B00BE8770 /* DateformatterExtension.swift in Sources */,
 				0B8639702A950E8C005ED10D /* FaceIDAuthExtension.swift in Sources */,
 				0B86394A2A950E3D005ED10D /* SweetLogApp.swift in Sources */,
+				0B2BB3E32AB58C410084EBB5 /* PasswordKeyboardView.swift in Sources */,
 				0BA50B3F2AA34D2700BE8770 /* SizeExtension.swift in Sources */,
 				0B86395D2A950E65005ED10D /* UserDefault.swift in Sources */,
 				0B8639722A950E8C005ED10D /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0BEADE7F2AB325580065381A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BEADE972AB32E040065381A /* Model.swift in Sources */,
+				0BEADE862AB325580065381A /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0BEADE8C2AB325580065381A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0BEADE822AB325580065381A /* SweetLogShare */;
+			targetProxy = 0BEADE8B2AB325580065381A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0BEADE872AB325580065381A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BEADE882AB325580065381A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0B8639522A950E3F005ED10D /* Debug */ = {
@@ -389,8 +513,10 @@
 		0B8639552A950E3F005ED10D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SweetLog/SweetLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SweetLog/Preview Content\"";
@@ -420,8 +546,10 @@
 		0B8639562A950E3F005ED10D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SweetLog/SweetLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SweetLog/Preview Content\"";
@@ -448,6 +576,58 @@
 			};
 			name = Release;
 		};
+		0BEADE8F2AB325580065381A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SweetLogShare/SweetLogShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y7F2ZW9QG3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SweetLogShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SweetLogShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = InhoYoo.SweetLog.SweetLogShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0BEADE902AB325580065381A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SweetLogShare/SweetLogShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y7F2ZW9QG3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SweetLogShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SweetLogShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = InhoYoo.SweetLog.SweetLogShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -465,6 +645,15 @@
 			buildConfigurations = (
 				0B8639552A950E3F005ED10D /* Debug */,
 				0B8639562A950E3F005ED10D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BEADE8E2AB325580065381A /* Build configuration list for PBXNativeTarget "SweetLogShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BEADE8F2AB325580065381A /* Debug */,
+				0BEADE902AB325580065381A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

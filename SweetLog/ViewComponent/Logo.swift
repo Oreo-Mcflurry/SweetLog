@@ -11,7 +11,7 @@ struct Logo: View {
     var body: some View {
         Text("Sweet Log")
             .foregroundStyle(Color.primarymain)
-            .font(.CustomFont.regular.font(size: 24))
+            .font(.CustomFont.light.font(size: 24))
     }
 }
 

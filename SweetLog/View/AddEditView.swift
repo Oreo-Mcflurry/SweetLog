@@ -88,6 +88,7 @@ struct AddEditView: View {
                  }
                  TextEditor(text: $text)
                    .font(.body)
+                   .foregroundStyle(Color.label1)
                    .opacity(self.text.isEmpty ? 0.25 : 1)
                }
     }
@@ -105,6 +106,7 @@ struct AddEditView: View {
         }
         .padding(.vertical)
         .frame(height: 80)
+        .disabled(text == "")
     }
 }
 

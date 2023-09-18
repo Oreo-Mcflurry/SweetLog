@@ -10,10 +10,15 @@ import SwiftUI
 extension Font {
     enum CustomFont: String {
         case regular = "SulphurPoint-Regular"
+        case light = "SulphurPoint-Light"
         
         func font(size: CGFloat) -> Font {
             return Font.custom(rawValue, size: size)
         }
+    }
+    
+    func font14() -> Font {
+        return Font.system(size: 14)
     }
 }
 

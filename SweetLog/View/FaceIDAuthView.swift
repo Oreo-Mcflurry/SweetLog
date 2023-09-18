@@ -9,61 +9,31 @@ import SwiftUI
 import LocalAuthentication
 
 struct FaceIDAuthView: View {
-    @EnvironmentObject var userData: UserData
-    @Environment (\.modelContext) var modelContext
-    @Binding var isUnlocked: Bool
+    @Binding var isUnlock: Bool
+    @State var isPasswordView = false
+    @State var passwordInput: String = ""
+    // UserDefaults
+    let password = UserDefaults.standard.string(forKey: "password") ?? "000000"
+    @State private var isFailPassword = false
     var body: some View {
-            VStack{
-                Text("다시 인증해주세요")
-                Button {
-                    authenticate(isUnlock: $isUnlocked)
-                } label: {
-                    Radial(text: "")
-                        .frame(width: 86, height: 50)
-                        .padding(.horizontal)
-                        .overlay {
-                            Image(systemName: "faceid")
-                                .foregroundStyle(.white)
-                                .font(.title)
+        VStack {
+            if isPasswordView {
+                Text(isFailPassword ? "비밀번호가 틀렸습니다" : "비밀번호 입력")
+                    .font(.title2)
+                    .foregroundStyle(Color.label1)
+                PasswordKeyboardView(passwordInput: $passwordInput, isUnlock: $isUnlock, password: password)
+                    .onChange(of: passwordInput) { oldValue, newValue in
+                        if newValue.count == password.count {
+                            if(newValue == password) { isUnlock = true }
+                            else { isFailPassword = true }
                         }
-                }
+                    }
             }
-            .onAppear(perform: { authenticate(isUnlock: $isUnlocked) })
+        }
+        .background {
+            Color.backGround.ignoresSafeArea()
+                .frame(width: UIWidth, height: UIHeight)
+        }
+        .onAppear(perform: { authenticate(isUnlock: $isUnlock, isPasswordView: $isPasswordView) })
     }
 }
-//
-//#Preview {
-//    FaceIDAuthView()
-//}
-
-//
-//if !isUnlocked {
-//    VStack{
-//        Text("인증해주세요.")
-//        Button("다시 인증하기") {
-//            authenticate(isUnlock: $isUnlocked)
-//        }
-//    }
-//    .onAppear(perform: { authenticate(isUnlock: $isUnlocked) })
-//
-//} else {
-//    Text("인증완")
-//        .onDisappear {
-//            isUnlocked = false
-//        }
-//
-//    TipView(tipTest, arrowEdge: .bottom)
-//
-//}
-//
-//
-//}
-//.onAppear { dataModel.modelContext = modelContext }
-//.task {
-//// Configure and load your tips at app launch.
-//try? await Tips.configure {
-//    DisplayFrequency(.immediate)
-//    DatastoreLocation(.applicationDefault)
-//}
-//
-//}

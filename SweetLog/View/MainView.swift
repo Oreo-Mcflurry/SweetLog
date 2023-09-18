@@ -17,12 +17,10 @@ struct MainView: View {
     @State private var showModal: Bool = false
     @State private var isUnlock: Bool = false
     
+    
     var body: some View {
         if userData.useFaceID && isUnlock == false {
-            FaceIDAuthView(isUnlocked: $isUnlock)
-                .background {
-                    mainScreen.opacity(0.5).disabled(true)
-                }
+            FaceIDAuthView(isUnlock: $isUnlock)
         } else {
             mainScreen
         }
@@ -32,7 +30,7 @@ struct MainView: View {
     var mainScreen: some View {
         GeometryReader { geo in
             ScrollViewReader { proxy in
-                ScrollView {
+                 ScrollView(showsIndicators: false) {
                     VStack {
                         firstScreen
                             .frame(height: UIHeight)
@@ -43,20 +41,21 @@ struct MainView: View {
                             .id("messages")
                         
                     }
-                }
-                .onAppear {
-                    if messages.isEmpty { proxy.scrollTo("first") }
+                 }
+                 .onAppear {
+                     if messages.isEmpty { proxy.scrollTo("first") }
                     dataModel.modelContext = modelContext
                 }
-                
             }
             .scrollDisabled(messages.isEmpty)
             .scrollTargetBehavior(.paging)
             .background(Color.backGround)
-            .scrollIndicators(.hidden)
             .ignoresSafeArea()
+            .navigationTitle("")
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) { Logo().padding() }
+                ToolbarItem(placement: .topBarLeading) {
+                        Logo().padding()
+                }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     maintoolbar
@@ -99,6 +98,8 @@ struct MainView: View {
                 }
             }
         }
+        .padding(.top)
+        .padding(.top)
     }
     
     var messageScroll: some View {

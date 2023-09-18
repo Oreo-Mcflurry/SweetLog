@@ -23,7 +23,6 @@ struct ScrollMessageView: View {
             .lineLimit(7)
             .padding()
             
-            
             HStack {
                 Spacer()
                 Text(DateFormatter.customDateFormatter.string(from: message.date))
@@ -36,6 +35,8 @@ struct ScrollMessageView: View {
         .background(
             Color.list
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .opacity(0.7)
+                .blur(radius: 0.5)
         )
     }
 }

@@ -25,11 +25,12 @@ struct SerchView: View {
     }
     
     var body: some View {
-        VStack {
+        ZStack {
             if searchText == "" {
                 Text("검색어를 입력해주세요")
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundStyle(Color.labelbrown)
+                    .padding(.bottom)
             } else {
                 ScrollView {
                     ForEach(serchingMessages) { item in
@@ -38,7 +39,6 @@ struct SerchView: View {
                         } label: {
                             ScrollMessageView(message: item, searchText: searchText)
                         }
-                        .padding(.bottom)
                         .padding(.horizontal)
                     }
                 }
@@ -54,27 +54,29 @@ struct SerchView: View {
                 .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(Color.textfieldSF)
-                        .font(.callout)
-                    TextField("검색", text: $searchText)
-                }
-                .padding(.vertical, 10)
-                .padding(.horizontal, 10)
-                .frame(width: UIWidth*0.8)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(Color.textfield)
-                }
+                serchbarView
             }
             
             ToolbarItem {
-                Button("취소") {
-                    dismiss()
-                }
+                Button("취소") { dismiss() }
                 .foregroundStyle(Color.primarymain)
             }
+        }
+    }
+    
+    private var serchbarView: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(Color.textfieldSF)
+                .font(.callout)
+            TextField("검색", text: $searchText)
+        }
+        .padding(.vertical, 10)
+        .padding(.horizontal, 10)
+        .frame(width: UIWidth*0.8)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(Color.textfield)
         }
     }
 }
@@ -86,12 +88,3 @@ struct SerchView: View {
 //            .modelContext(previewmod)
     }
 }
-
-
-
-//                List {
-//
-//                }
-//                .searchable(text: $searchText, isPresented: $isSearching) {
-//                                Text("검색")
-//                            }
