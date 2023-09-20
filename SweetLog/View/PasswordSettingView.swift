@@ -16,7 +16,7 @@ struct PasswordSettingView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-            NavigationLink(destination: PasswordSettingWithFaceID(useFaceID: $useFaceID, password: $password, isComplete: $isComplete), isActive: $isPasswordCheck) { EmptyView() }
+            
             VStack {
                 Text("암호를 입력해주세요")
                     .font(.title2)
@@ -32,6 +32,9 @@ struct PasswordSettingView: View {
                     .onAppear { if isComplete { dismiss() } }
                     .onDisappear { if !isPasswordCheck && !isComplete { useFaceID = false } }
             }
+            .navigationDestination(isPresented: $isPasswordCheck) {
+                PasswordSettingWithFaceID(useFaceID: $useFaceID, password: $password, isComplete: $isComplete)
+                }
         .background {
             Color.backGround.ignoresSafeArea()
                 .frame(width: UIWidth, height: UIHeight)

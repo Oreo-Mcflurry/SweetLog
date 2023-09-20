@@ -15,7 +15,6 @@ struct SettingView: View {
         ZStack {
             Color.backGround.ignoresSafeArea()
             VStack {
-                
                 Toggle(isOn: $useFaceID) {
                     Text("생체인증 잠금")
                 }
@@ -23,11 +22,10 @@ struct SettingView: View {
                 .padding()
                 Spacer()
             }
-            
-            NavigationLink(destination: PasswordSettingView(useFaceID: $useFaceID), isActive: $isSettingPassword) {
-                EmptyView()
-            }
-            .navigationTitle("")
+//            .navigationTitle("")
+        }
+        .navigationDestination(isPresented: $isSettingPassword) {
+            PasswordSettingView(useFaceID: $useFaceID)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

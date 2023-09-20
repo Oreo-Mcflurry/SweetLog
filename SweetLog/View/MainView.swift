@@ -16,7 +16,7 @@ struct MainView: View {
     @Query var messages: [Message]
     @State private var showModal: Bool = false
     @State private var isUnlock: Bool = false
-    
+    @State private var scrollOffset: CGFloat = 0.0
     
     var body: some View {
         if userData.useFaceID && isUnlock == false {
@@ -41,11 +41,13 @@ struct MainView: View {
                             .id("messages")
                         
                     }
+                     
                  }
                  .onAppear {
                      if messages.isEmpty { proxy.scrollTo("first") }
                     dataModel.modelContext = modelContext
                 }
+                
             }
             .scrollDisabled(messages.isEmpty)
             .scrollTargetBehavior(.paging)
