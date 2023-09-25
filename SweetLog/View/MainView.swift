@@ -11,26 +11,16 @@ import SwiftData
 struct MainView: View {
     @StateObject var dataModel = SwiftDataViewModel()
     @Environment (\.modelContext) var modelContext
-    @EnvironmentObject var userData: UserData
+    
     @Environment(\.dismiss) private var dismiss
-    @Query var messages: [Message]
+    @Query(sort : \Message.date) var messages: [Message]
     @State private var showModal: Bool = false
-    @State private var isUnlock: Bool = false
     @State private var scrollOffset: CGFloat = 0.0
-    
     var body: some View {
-        if userData.useFaceID && isUnlock == false {
-            FaceIDAuthView(isUnlock: $isUnlock)
-        } else {
-            mainScreen
-        }
-        
-    }
-    
-    var mainScreen: some View {
         GeometryReader { geo in
             ScrollViewReader { proxy in
-                 ScrollView(showsIndicators: false) {
+                ScrollViewOffset(onOffsetChange: { (offset) in
+                    scrollOffset = offset }) {
                     VStack {
                         firstScreen
                             .frame(height: UIHeight)
@@ -41,32 +31,33 @@ struct MainView: View {
                             .id("messages")
                         
                     }
-                     
+                    
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Logo()
+                                .padding()
+                                .opacity(0.003 * -scrollOffset)
+                        }
+                        ToolbarItem(placement: .topBarTrailing) { maintoolbar }
+                    }
+                    
                  }
                  .onAppear {
                      if messages.isEmpty { proxy.scrollTo("first") }
                     dataModel.modelContext = modelContext
                 }
-                
             }
+            .scrollIndicators(.hidden)
             .scrollDisabled(messages.isEmpty)
             .scrollTargetBehavior(.paging)
-            .background(Color.backGround)
             .ignoresSafeArea()
             .navigationTitle("")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                        Logo().padding()
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    maintoolbar
-                }
-            }
+            .toolbarBackground(Color.backGround)
+            .background(Color.backGround)
         }
     }
     
-    var firstScreen: some View {
+    private var firstScreen: some View {
         VStack {
             Spacer()
             Logo()
@@ -75,15 +66,13 @@ struct MainView: View {
             Button {
                 self.showModal.toggle()
             } label: {
-                Radial(text: "+")
+                Radial(text: "", isPlus: true)
                     .frame(width: 86, height: 50)
             }
-            .sheet(isPresented: self.$showModal) {
-                AddEditView(showModal: $showModal)
-            }
+            .sheet(isPresented: self.$showModal) { AddEditView(showModal: $showModal) }
             
             if messages.isEmpty {
-                Text("+ 버튼을 눌러 달콤한 메세지를 추가해보세요")
+                Text("+ 버튼을 눌러 메세지를 추가해보세요")
                     .foregroundColor(Color.secondarydark)
                     .padding()
                 Spacer()
@@ -91,20 +80,24 @@ struct MainView: View {
                 Spacer()
                 VStack {
                     Text("\(messages.count) messages")
+//                    Text("525 messages")
                         .font(.CustomFont.regular.font(size: 15))
                         .foregroundColor(.primarymain)
+                        .bold()
                     Image(systemName: "chevron.down")
-                        .foregroundColor(.primarymain)
+                        .foregroundColor(.primarylight)
                         .padding()
+                        .padding(.bottom)
                         .padding(.bottom)
                 }
             }
         }
+        
         .padding(.top)
         .padding(.top)
     }
     
-    var messageScroll: some View {
+    private var messageScroll: some View {
         ScrollView {
             LazyVStack {
                 ForEach(messages) { item in
@@ -112,44 +105,41 @@ struct MainView: View {
                         DetailView(message: item)
                     } label: {
                         ScrollMessageView(message: item)
-                            .padding(.bottom)
+                            .padding(.bottom, 5)
                             .padding(.horizontal)
                         
                     }
                 }
             }
+            .padding(.top, 10)
             .ignoresSafeArea()
             
             
         }
-        .background {
-            Image(image: .mainBG)
-                .resizable()
-                .frame(width: UIWidth, height: .infinity)
-                .ignoresSafeArea()
-        }
     }
     
-    var maintoolbar: some View {
+    private var maintoolbar: some View {
         HStack {
             NavigationLink {
-                SerchView()
+                SearchView()
             } label: {
                 Image(systemName: "magnifyingglass").foregroundColor(.primarymain)
+                    
             }
             
             NavigationLink {
                 SettingView()
             } label: {
                 Image(systemName: "slider.horizontal.3").foregroundColor(.primarymain)
+                    
             }
         }
     }
 }
 
-#Preview {
-    NavigationStack {
-        MainView()
+//#Preview {
+//    NavigationStack {
+//        MainView()
         //            .modelContext(ModelContext(p))
-    }
-}
+//    }
+//}

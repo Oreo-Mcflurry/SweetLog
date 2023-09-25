@@ -15,44 +15,45 @@ struct DetailView: View {
     @StateObject var dataModel = SwiftDataViewModel()
     @Environment (\.modelContext) var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Group {
-                if let search = searchText {
-                    AttributedText(text: message.message, keyword: search, isDetail: true)
-                } else {
-                    Text(message.message)
-                        .foregroundStyle(Color.label1)
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(DateFormatter.customDateFormatter.string(from: message.date))
+                        .font(.system(size: 15))
+                        .foregroundStyle(Color.labelbrown)
+                    Spacer()
                 }
+                .padding(.vertical)
+                .padding(.bottom)
+                
+                Group {
+                    if let search = searchText {
+                        AttributedText(text: message.message, keyword: search, isDetail: true)
+                    } else {
+                        Text(message.message)
+                            .foregroundStyle(Color.label1)
+                    }
+                }
+                .multilineTextAlignment(.leading)
+                
             }
-            .foregroundStyle(.black)
-            .padding(.leading)
-            
-            HStack {
-                Spacer()
-                Text(DateFormatter.customDateFormatter.string(from: message.date))
-                    .font(.caption)
-                    .foregroundStyle(Color.labelbrown)
-                    .padding()
-            }
+            .padding(.horizontal)
+            .padding(.horizontal, 4)
         }
-        .onAppear {
-            dataModel.modelContext = modelContext
-        }
-        .sheet(isPresented: self.$showModal) {
-            AddEditView(editMessage: message, showModal: $showModal)
-        }
+        .toolbar { ToolbarItem(placement: .topBarTrailing) { toolbarmenu } }
+        .toolbarBackground(Color.backGround)
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear { dataModel.modelContext = modelContext }
+        .sheet(isPresented: self.$showModal) { AddEditView(editMessage: message, showModal: $showModal) }
+        .background(Color.backGround)
         .alert("메세지를 삭제할까요?", isPresented: $showDeleteAlert) {
             cancleButton
             deleteButton
         }
         
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                toolbarmenu
-            }
-        }
     }
     
     private var toolbarmenu: some View {
@@ -95,8 +96,8 @@ struct DetailView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        MainView()
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        MainView()
+//    }
+//}

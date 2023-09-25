@@ -18,9 +18,10 @@ struct ScrollMessageView: View {
                 if let search = searchText { AttributedText(text: message.message, keyword: search) }
                 else { Text(message.message) }
             }
-            .foregroundStyle(.black)
+            .font(.system(size: 14))
+            .foregroundStyle(Color.label1)
             .multilineTextAlignment(.leading)
-            .lineLimit(7)
+            .lineLimit(9)
             .padding()
             
             HStack {
@@ -29,19 +30,17 @@ struct ScrollMessageView: View {
                     .font(.caption)
                     .padding(.trailing)
                     .padding(.bottom)
-                    .foregroundStyle(Color.primarydark)
+                    .foregroundStyle(Color.labelbrown)
             }
         }
         .background(
             Color.list
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .opacity(0.7)
-                .blur(radius: 0.5)
         )
     }
 }
 
-#Preview {
-    MainView()
-}
-
+//#Preview {
+//    MainView()
+//}
+//

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SettingView: View {
-    @EnvironmentObject var userData: UserData
+//    @Binding var isInActive: Bool
     @State var useFaceID = UserDefaults.standard.bool(forKey: "useFaceID")
     @State var isSettingPassword: Bool = false
+    @EnvironmentObject var userData: UserData
+//    @Environment(\.scenePhase) private var scenePhase
     var body: some View {
         ZStack {
             Color.backGround.ignoresSafeArea()
@@ -22,11 +24,9 @@ struct SettingView: View {
                 .padding()
                 Spacer()
             }
-//            .navigationTitle("")
         }
-        .navigationDestination(isPresented: $isSettingPassword) {
-            PasswordSettingView(useFaceID: $useFaceID)
-        }
+        .navigationDestination(isPresented: $isSettingPassword) { PasswordSettingView(useFaceID: $useFaceID) }
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Setting")
@@ -45,8 +45,8 @@ struct SettingView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        SettingView()
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        SettingView()
+//    }
+//}

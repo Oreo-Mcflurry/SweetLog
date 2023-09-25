@@ -15,7 +15,7 @@ struct AddEditView: View {
     @State var date: Date = Date()
     @StateObject var dataModel = SwiftDataViewModel()
     @Environment (\.modelContext) var modelContext
-    @State var placeholderText = "보관하고 싶은 달콤한 메세지를 입력해주세요"
+    @State var placeholderText = "보관하고 싶은 메세지를 입력해주세요"
     
     var body: some View {
         
@@ -25,9 +25,8 @@ struct AddEditView: View {
             textedit
             savebutton
         }
-        .padding([.top, .horizontal])
-        .padding(.top)
-        .padding(.horizontal)
+        .padding(.top, 36)
+        .padding(.horizontal, 20)
         .background {
             Image(image: .addBG)
                 .resizable()
@@ -47,7 +46,7 @@ struct AddEditView: View {
         HStack {
             Text(editMessage == nil ? "Add Message" : "Edit Message")
                 .foregroundStyle(Color.secondarymain)
-                .font(.CustomFont.regular.font(size: 24))
+                .font(.CustomFont.regular.font(size: 20))
             
             Spacer()
             
@@ -56,7 +55,7 @@ struct AddEditView: View {
             } label: {
                 Image(systemName: "xmark")
                     .foregroundStyle(Color.secondarymain)
-                    .font(.title3)
+                    .font(.system(size: 18))
             }
         }
     }
@@ -65,6 +64,7 @@ struct AddEditView: View {
         HStack {
             Text(DateFormatter.customDateFormatter.string(from: date))
                 .foregroundStyle(Color.labelbrown)
+                .font(.system(size: 14))
             
             Image(systemName: "calendar")
                 .foregroundStyle(Color.primarymain)
@@ -81,16 +81,26 @@ struct AddEditView: View {
     var textedit: some View {
         ZStack {
                  if self.text.isEmpty {
-                   TextEditor(text: $placeholderText)
-                     .font(.body)
-                     .foregroundColor(.labelgreen)
-                     .disabled(true)
+                     TextEditor(text: $placeholderText)
+                         .font(.system(size: 14))
+                         .foregroundColor(.labelgreen)
+                         .disabled(true)
+                         .padding(.all, 8)
+                         .background {
+                             Color.white.clipShape(RoundedRectangle(cornerRadius: 8))
+                         }
                  }
-                 TextEditor(text: $text)
-                   .font(.body)
-                   .foregroundStyle(Color.label1)
-                   .opacity(self.text.isEmpty ? 0.25 : 1)
-               }
+                TextEditor(text: $text)
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.label1)
+                    .opacity(self.text.isEmpty ? 0.25 : 1)
+                    .padding(.all, 8)
+                    .background {
+                        Color.white
+                            .opacity(text == "" ? 0 : 1)
+                    }
+                    
+        }
     }
     
     var savebutton: some View {
@@ -102,7 +112,7 @@ struct AddEditView: View {
             }
             self.showModal.toggle()
         } label: {
-            Radial(text: "저장")
+            Radial(text: "저장", isDisable: text == "")
         }
         .padding(.vertical)
         .frame(height: 80)

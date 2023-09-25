@@ -10,8 +10,9 @@ import SwiftData
 
 @Model
 final class Message {
-    var date: Date
-    var message: String
+    var id: UUID = UUID()
+    var date: Date = Date()
+    var message: String = ""
     
     init(date: Date, message: String) {
         self.date = date

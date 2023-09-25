@@ -5,33 +5,6 @@
 //  Created by A_Mcflurry on 2023/08/21.
 //
 
-//                    if isDetail {
-//                        Text(keyword)
-//                            .background(Color.primarylight)
-//                    } else {
-//                        Text(keyword)
-//                            .foregroundColor(Color.red)
-//                    }
-//            let components = text.components(separatedBy: keyword)
-//            ForEach(0..<components.count, id: \.self) { index in
-//                if index < components.count - 1 {
-//                    Text(components[index])
-//                        .foregroundStyle(.black)
-//
-//                    if isDetail {
-//                        Text(keyword)
-//                            .background(Color.primarylight)
-//                    } else {
-//                        Text(keyword)
-//                            .foregroundColor(Color.red)
-//                    }
-//
-//                } else {
-//                    Text(components[index])
-//                        .foregroundStyle(.black)
-//                }
-//            }
-
 import SwiftUI
 import UIKit
 
@@ -50,7 +23,7 @@ struct AttributedText: View {
         
         if let range = attributedString.range(of: "\(keyword)") {
             attributedString[range].foregroundColor = isDetail ? nil : .red
-            attributedString[range].backgroundColor = isDetail ? Color.primarymain : nil
+            attributedString[range].backgroundColor = isDetail ? Color.primarymain.opacity(0.3) : nil
         }
         
         return attributedString

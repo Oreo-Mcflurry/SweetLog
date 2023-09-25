@@ -80,11 +80,14 @@ struct PasswordNumberButton: View {
 
 struct FaceIdButton: View {
     @Binding var isUnlocked: Bool
+    let biometricType = UIDevice.current.biometricType
     var body: some View {
+        let bioSymbol = biometricType == .faceID ? "faceid" : "touchid"
         Button {
             authenticate(isUnlock: $isUnlocked, isPasswordView: .constant(true))
         } label: {
-            Image(systemName: "faceid")
+            
+            Image(systemName: bioSymbol)
                 .font(.title)
         }
     }
@@ -105,7 +108,5 @@ struct PasswordCircleView: View {
         }
         .frame(width: circleFrame, height: circleFrame)
         .padding(.horizontal, 4)
-            
-            
     }
 }
