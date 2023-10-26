@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-class SwiftDataViewModel: ObservableObject {
+class MessageDataManager: ObservableObject {
     var modelContext: ModelContext? = nil
     
     func addItem(date: Date, message: String) {

@@ -12,7 +12,6 @@ struct FaceIDAuthView: View {
     @Binding var isUnlock: Bool
     @State var isPasswordView = false
     @State var passwordInput: String = ""
-    // UserDefaults
     let password = UserDefaults.standard.string(forKey: "password") ?? "000000"
     @State private var isFailPassword = false
     var body: some View {

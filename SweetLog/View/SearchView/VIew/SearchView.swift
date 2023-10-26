@@ -9,16 +9,15 @@ import SwiftUI
 import SwiftData
 
 struct SearchView: View {
+	@Query(sort : \Message.date) var messages: [Message]
     @Environment (\.modelContext) var modelContext
     @Environment(\.dismiss) private var dismiss
-    @State var searchText: String = ""
-    @State var isSearching: Bool = false
-    @Query(sort : \Message.date) var messages: [Message]
-    
+    @StateObject var viewModel = SearchViewModel()
+
     var searchingMessages: [Message] {
         let queryMessages = messages.compactMap { item in
-            let containQuery = item.message.range(of: searchText, options: .caseInsensitive) != nil
-            
+			let containQuery = item.message.range(of: viewModel.searchText, options: .caseInsensitive) != nil
+
             return containQuery ? item : nil
         }
         return queryMessages
@@ -27,7 +26,7 @@ struct SearchView: View {
     var body: some View {
         ZStack {
             Color.backGround.ignoresSafeArea()
-            if searchText == "" {
+			if viewModel.searchText == "" {
                 notSearchView
             } else {
                 searchScroll
@@ -49,7 +48,7 @@ struct SearchView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(Color.textfieldSF.opacity(0.6))
                 .font(.system(size: 16))
-            TextField("검색", text: $searchText)
+			TextField("검색", text: $viewModel.searchText)
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 10)
@@ -76,9 +75,9 @@ struct SearchView: View {
         ScrollView {
             ForEach(searchingMessages) { item in
                 NavigationLink {
-                    DetailView(message: item, searchText: searchText)
+					DetailView(message: item, searchText: viewModel.searchText)
                 } label: {
-                    ScrollMessageView(message: item, searchText: searchText)
+					ScrollMessageView(message: item, searchText: viewModel.searchText)
                 }
                 .padding(.horizontal)
             }
@@ -86,11 +85,3 @@ struct SearchView: View {
         .padding(.top, 10)
     }
 }
-
-
-//#Preview {
-//    NavigationStack {
-//        MainView()
-////            .modelContext(previewmod)
-//    }
-//}

@@ -15,8 +15,7 @@ struct PasswordSettingView: View {
     @State var isComplete = false
     @Environment(\.dismiss) private var dismiss
     
-    var body: some View {
-            
+	var body: some View {
             VStack {
                 Text("암호를 입력해주세요")
                     .font(.title2)

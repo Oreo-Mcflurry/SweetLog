@@ -10,12 +10,9 @@ import SwiftUI
 struct AddEditView: View {
     var editMessage: Message? = nil
     @Binding var showModal: Bool
-    
-    @State var text: String = ""
-    @State var date: Date = Date()
-    @StateObject var dataModel = SwiftDataViewModel()
+	@StateObject var viewModel = AddEditViewModel()
+    @StateObject var dataModel = MessageDataManager()
     @Environment (\.modelContext) var modelContext
-    @State var placeholderText = "보관하고 싶은 메세지를 입력해주세요"
     
     var body: some View {
         
@@ -35,8 +32,8 @@ struct AddEditView: View {
         }
         .onAppear {
             if let message = editMessage {
-                text = message.message
-                date = message.date
+				viewModel.text = message.message
+				viewModel.date = message.date
             }
             dataModel.modelContext = modelContext
         }
@@ -62,14 +59,14 @@ struct AddEditView: View {
     
     var dateview: some View {
         HStack {
-            Text(DateFormatter.customDateFormatter.string(from: date))
+			Text(DateFormatter.customDateFormatter.string(from: viewModel.date))
                 .foregroundStyle(Color.labelbrown)
                 .font(.system(size: 14))
             
             Image(systemName: "calendar")
                 .foregroundStyle(Color.primarymain)
                 .overlay{
-                    DatePicker("", selection: $date, displayedComponents: [.date])
+					DatePicker("", selection: $viewModel.date, displayedComponents: [.date])
                     .blendMode(.destinationOver)
                     .padding(.top)
                 }
@@ -80,8 +77,8 @@ struct AddEditView: View {
     
     var textedit: some View {
         ZStack {
-                 if self.text.isEmpty {
-                     TextEditor(text: $placeholderText)
+			if self.viewModel.text.isEmpty {
+					 TextEditor(text: .constant("보관하고 싶은 메세지를 입력해주세요"))
                          .font(.system(size: 14))
                          .foregroundColor(.labelgreen)
                          .disabled(true)
@@ -90,14 +87,14 @@ struct AddEditView: View {
                              Color.white.clipShape(RoundedRectangle(cornerRadius: 8))
                          }
                  }
-                TextEditor(text: $text)
+			TextEditor(text: $viewModel.text)
                     .font(.system(size: 14))
                     .foregroundStyle(Color.label1)
-                    .opacity(self.text.isEmpty ? 0.25 : 1)
+					.opacity(self.viewModel.text.isEmpty ? 0.25 : 1)
                     .padding(.all, 8)
                     .background {
                         Color.white
-                            .opacity(text == "" ? 0 : 1)
+							.opacity(viewModel.text == "" ? 0 : 1)
                     }
                     
         }
@@ -106,17 +103,17 @@ struct AddEditView: View {
     var savebutton: some View {
         Button {
             if editMessage == nil {
-                dataModel.addItem(date: date, message: text)
+				dataModel.addItem(date: viewModel.date, message: viewModel.text)
             } else {
-                dataModel.updateItems(item: editMessage!, date: date, message: text)
+				dataModel.updateItems(item: editMessage!, date: viewModel.date, message: viewModel.text)
             }
             self.showModal.toggle()
         } label: {
-            Radial(text: "저장", isDisable: text == "")
+			Radial(text: "저장", isDisable: viewModel.text == "")
         }
         .padding(.vertical)
         .frame(height: 80)
-        .disabled(text == "")
+		.disabled(viewModel.text == "")
     }
 }
 

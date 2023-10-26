@@ -10,12 +10,10 @@ import SwiftUI
 struct DetailView: View {
     let message: Message
     var searchText: String? = nil
-    @State var showModal: Bool = false
-    @State var showDeleteAlert: Bool = false
-    @StateObject var dataModel = SwiftDataViewModel()
+	@StateObject var viewModel = DetailViewModel()
+    @StateObject var dataModel = MessageDataManager()
     @Environment (\.modelContext) var modelContext
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         ScrollView {
@@ -47,9 +45,9 @@ struct DetailView: View {
         .toolbarBackground(Color.backGround)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { dataModel.modelContext = modelContext }
-        .sheet(isPresented: self.$showModal) { AddEditView(editMessage: message, showModal: $showModal) }
+		.sheet(isPresented: self.$viewModel.showModal) { AddEditView(editMessage: message, showModal: $viewModel.showModal) }
         .background(Color.backGround)
-        .alert("메세지를 삭제할까요?", isPresented: $showDeleteAlert) {
+		.alert("메세지를 삭제할까요?", isPresented: $viewModel.showDeleteAlert) {
             cancleButton
             deleteButton
         }
@@ -59,7 +57,7 @@ struct DetailView: View {
     private var toolbarmenu: some View {
         Menu {
             Button {
-                self.showModal.toggle()
+				self.viewModel.showModal.toggle()
             } label: {
                 HStack {
                     Text("수정하기")
@@ -67,9 +65,9 @@ struct DetailView: View {
                     Image(systemName: "square.and.pencil")
                 }
             }
-//
+
             Button(role: .destructive) {
-                self.showDeleteAlert.toggle()
+				self.viewModel.showDeleteAlert.toggle()
             } label: {
                 HStack {
                     Text("삭제하기")
@@ -95,9 +93,3 @@ struct DetailView: View {
         Button("취소", role: .cancel) { }
     }
 }
-
-//#Preview {
-//    NavigationStack {
-//        MainView()
-//    }
-//}

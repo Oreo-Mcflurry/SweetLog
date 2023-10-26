@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct SettingView: View {
-//    @Binding var isInActive: Bool
-    @State var useFaceID = UserDefaults.standard.bool(forKey: "useFaceID")
-    @State var isSettingPassword: Bool = false
+	@StateObject var viewModel = SettingViewModel()
     @EnvironmentObject var userData: UserData
-//    @Environment(\.scenePhase) private var scenePhase
     var body: some View {
         ZStack {
             Color.backGround.ignoresSafeArea()
             VStack {
-                Toggle(isOn: $useFaceID) {
+				Toggle(isOn: $viewModel.useFaceID) {
                     Text("생체인증 잠금")
                 }
                 .padding()
@@ -25,7 +22,7 @@ struct SettingView: View {
                 Spacer()
             }
         }
-        .navigationDestination(isPresented: $isSettingPassword) { PasswordSettingView(useFaceID: $useFaceID) }
+		.navigationDestination(isPresented: $viewModel.isSettingPassword) { PasswordSettingView(useFaceID: $viewModel.useFaceID) }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -34,9 +31,9 @@ struct SettingView: View {
                     .font(.CustomFont.light.font(size: 24))
             }
         }
-        .onChange(of: useFaceID) { oldValue, newValue in
+		.onChange(of: viewModel.useFaceID) { oldValue, newValue in
             if newValue {
-                isSettingPassword = newValue
+				viewModel.isSettingPassword = newValue
             } else {
                 UserDefaults.standard.set(newValue, forKey: "useFaceID")
             }
@@ -44,9 +41,3 @@ struct SettingView: View {
         }
     }
 }
-
-//#Preview {
-//    NavigationStack {
-//        SettingView()
-//    }
-//}

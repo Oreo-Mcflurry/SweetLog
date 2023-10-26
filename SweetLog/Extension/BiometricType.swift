@@ -27,7 +27,6 @@ extension UIDevice {
                 return .none
             }
         } else {
-            // iOS 10 및 이전에서는 Face ID가 없으므로 Touch ID만 있을 수 있습니다.
             return .touchID
         }
     }

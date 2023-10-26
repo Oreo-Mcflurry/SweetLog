@@ -39,8 +39,3 @@ struct ScrollMessageView: View {
         )
     }
 }
-
-//#Preview {
-//    MainView()
-//}
-//
